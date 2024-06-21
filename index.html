@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bs4/css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <title>List</title>
+    <script>
+        $(document).ready(function () {
+            // sort
+            var arr1 = ['ff', 'ss', 'dd', 'aa', 'gg'];
+            for (var i = 0; i <= arr1.length - 1; i++) {
+                var x = '<li>' + arr1[i] + '</li>';
+                $('ol').append(x);
+            }
+               $(document).on('click', '#btn5', function () {
+                var arr1 =[];
+                    $('li').each(function(){
+                    console.log(typeof arr1);
+                    arr1.push($(this).text());
+                })
+                
+                    $('ol').empty().fadeOut(1000);
+                    arr1.sort();
+                   for (var i = 0; i <= arr1.length - 1; i++){
+                     var x = '<li>' + arr1[i] + '</li>';
+                $('ol').append(x).fadeIn(1000);
+                   }
+                var arr1 = ['ff', 'ss', 'dd', 'aa', 'gg'];  
+            })
+
+            // append
+            $('#btn1').click(function () {
+                let v = $('#my-input').val();
+                if (v != "") {
+                    var s = $('ol').append('<li class="new-item">' + v + '</li>');
+                
+                    $('input').val('');
+                } else {
+                    alert('erroe');
+                }
+            })
+
+
+            // prepend
+            $('#btn2').click(function () {
+                let v = $('#my-input').val();
+                if (v != "") {
+                    var s2 = $('ol').prepend('<li class=new-item>' + v + '</li>');
+                
+
+                    $('input').val('');
+                } else {
+                    alert('erroe');
+                }
+
+            })
+
+
+
+            // selectore
+
+            $(document).on('click', 'li', function () {
+                $(this).toggleClass("selectores");
+
+            })
+
+            // remove new item
+            $(document).on('click', '#btn3', function () {
+                let l = $('.new-item').length;
+                if (confirm('do you want to remove new item ' + (l) + ' ?')) {
+                    $('.new-item').remove();
+
+                }
+            })
+
+            // remove new item
+            $(document).on('click', '#btn4', function () {
+                let t = $(".selectores").text();
+                if (confirm('do you want to remove: ' + (t) + ' ?')) {
+
+                    $(".selectores").remove();
+                }
+            })
+        })
+    </script>
+
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding-top: 100px;
+            background-color: skyblue;
+        }
+
+        .new-item {
+            color: blue;
+        }
+
+        .selectores {
+            background-color: brown;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container ">
+        <div class="d-flex ">
+            <input type="text" id="my-input">
+            <button id="btn1" class="btn btn-primary">append</button>
+            <button id="btn2" class="btn btn-info">Prepend</button>
+            <button id="btn3" class="btn btn-danger">remove new items</button>
+            <button id="btn4" class="btn btn-warning">remove selected items</button>
+            <button id="btn5" class="btn btn-info">sort array</button>
+        </div>
+
+        <ol>
+
+
+        </ol>
+
+    </div>
+
+
+    <script src="bs4/js/bootstrap.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="sort.js"></script>
+</body>
+
+</html>
